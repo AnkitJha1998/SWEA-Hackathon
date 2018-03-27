@@ -2,6 +2,8 @@ int pins[5]={2,3,4,5,6};
 int trigpin=9;
 int echopin=8;
 
+int loopCounter=0;
+
 double duration;
 double distance;
 
@@ -35,8 +37,13 @@ void setup() {
 
 
 void loop() {
-  
-  (access=false)?Serial.print("0;\n"):Serial.print("1;\n");
+  loopCounter++;
+  if(loopCounter==10){
+    loopCounter=0;
+    }
+  if(access==false&&buzzAlarm==false){if(loopCounter==0)Serial.print("0;\n");}
+  else if(access==true&&buzzAlarm==false)Serial.print("1;\n");
+  else Serial.print("2;\n");
   digitalWrite(trigpin,LOW);
   for(int i=0;i<5;i++)
   {
@@ -73,12 +80,17 @@ void loop() {
   {
     
     if(distance<20){
-      Serial.println("Intruder");
+      buzzAlarm=true;
+      Serial.print("2;\n");
       digitalWrite(pins[3],HIGH);digitalWrite(pins[4],HIGH);
       delay(400);
       digitalWrite(pins[3],LOW);digitalWrite(pins[4],LOW);
       delay(400);
       
+      }
+      else
+      {
+        buzzAlarm=false;
       }
   }
   delay(50);

@@ -27,24 +27,20 @@ def choose1():
         if i>=3:
             print("! ! ! Intruder suspected ! ! !")
     if counter==True :
-        str=ard1.readLine()
-        if str[0]=='0':
+        str=ard.readline()
+        str=str.decode('utf-8')
+        if str[0]=='2':
             print('! ! ! Intruder Alert ! ! !')
-            while(str[0]!='1'):
+            while(str[0]!='0'):
                 str=ard.readLine()
-                if str[0]=='1':
+                if str[0]=='0':
                    break;
         strWrite="1;\n"
         ard.write(strWrite.encode("utf-8"))
         print("\nAccess Granted for thirty seconds.\n\n")
         time.sleep(30)
         strWrite="2;\n"
-        while(1):
-            ard.write(strWrite.encode("utf-8"))
-            str11=ard.readLine()
-            if (str11[0]=='0'):
-                break;
-    
+        ard.write(strWrite.encode('utf-8'))   
     return
 
 #-------------------------------------------------------------------------------------------------------------
@@ -55,12 +51,15 @@ intruder=False
 def choose2():
     
     str=ard.readline()
-    if str[0]=='0' :
+    str=str.decode('utf-8')
+    print(str[0])
+    if str[0]=='2' :
         print("! ! ! Intruder ALERT ! ! !")
         intruder=True
         while(intruder!=False):
-            str=ard.readLine()
-            if str[0]=='0':
+            str1=ard.readline()
+            str1=str1.decode('utf-8')
+            if str1[0]=='0':
                 intruder=False
                 break;
     return
