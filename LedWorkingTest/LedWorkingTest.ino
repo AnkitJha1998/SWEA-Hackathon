@@ -55,10 +55,12 @@ void loop() {
   }
   else if(access==false)
   {
+    
     if(distance<20){
-      pinMode(pins[3],HIGH);
+      Serial.println("Intruder");
+      digitalWrite(pins[3],HIGH);digitalWrite(pins[4],HIGH);
       delay(400);
-     pinMode(pins[3],LOW);
+      digitalWrite(pins[3],LOW);digitalWrite(pins[4],LOW);
       delay(400);
       
       }

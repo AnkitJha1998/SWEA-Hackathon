@@ -25,16 +25,19 @@ def choose1():
     return
 
 #-------------------------------------------------------------------------------------------------------------
-
+intruder=false;
 def choose2():
     ard1=serial.Serial('COM8',9600)
     str=ard.readLine()
+    if(str[0]=='1'):
+        print("! ! ! Intruder Alert ! ! !")
+        intruder=true;
     
 
 
 choose=1
 while(1):
-    choose=int(input("\n1. Enter ID\n2. Check for Intruder alarm\n3. Face Recognition\n4. Exit\n\nChoose:"))
+    choose=int(input("\n1. Enter ID\n2. Check for Intruder alarm\n3. Face Recognition\n\4. Turn off Alarm(If Intruder Detected)n5. Exit\n\nChoose:"))
     if choose==1:
         choose1()
     elif choose==2:
@@ -42,5 +45,7 @@ while(1):
     elif choose==3:
         choose3()
     elif choose==4:
+        choose4()
+    elif choose==5:
         break;
 print("Bye")
