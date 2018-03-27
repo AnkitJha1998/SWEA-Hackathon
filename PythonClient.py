@@ -2,7 +2,7 @@ import serial
 import _thread
 import time
 
-ard1=serial.Serial('COM8',9600)
+ard=serial.Serial('COM6',9600)
 
 #----------------------------------------------------Case 1---------------------------------------------------
 
@@ -26,11 +26,11 @@ def choose1():
             print("Incorrect Detail. You have ", (3-i), " chances")
         if i>=3:
             print("! ! ! Intruder suspected ! ! !")
-    if counter==true :
+    if counter==True :
         str=ard1.readLine()
         if str[0]=='0':
             print('! ! ! Intruder Alert ! ! !')
-            while(str!='1'):
+            while(str[0]!='1'):
                 str=ard.readLine()
                 if str[0]=='1':
                    break;
@@ -54,8 +54,8 @@ def choose1():
 intruder=False
 def choose2():
     
-    str=ard.readLine()
-    if str[0]=='1' :
+    str=ard.readline()
+    if str[0]=='0' :
         print("! ! ! Intruder ALERT ! ! !")
         intruder=True
         while(intruder!=False):

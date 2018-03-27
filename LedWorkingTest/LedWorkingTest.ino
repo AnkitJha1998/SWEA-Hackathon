@@ -1,4 +1,4 @@
-int pins[5]={2,3,4,5,7};
+int pins[5]={2,3,4,5,6};
 int trigpin=9;
 int echopin=8;
 
@@ -61,11 +61,11 @@ void loop() {
   digitalWrite(trigpin,LOW);
   duration=pulseIn(echopin,HIGH);
   distance=duration*0.034/2;
-  
+  //Serial.print(distance);Serial.println(" cm");
   if(access==true)
   {
-      if(distance<20&&distance>11){switchOn(2);}
-      else if(distance<=11&&distance>6){switchOn(1);}
+      if(distance<22&&distance>13){switchOn(2);}
+      else if(distance<=13&&distance>6){switchOn(1);}
       else if(distance<=6){switchOn(0);}
       else switchOff();
   }
