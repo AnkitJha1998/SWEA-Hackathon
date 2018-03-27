@@ -1,5 +1,5 @@
 
-int pins[4]={2,3,5,6};
+int pins[5]={2,3,4,5,6};
 int trigpin=9;
 int echopin=8;
 
@@ -7,7 +7,7 @@ double duration;
 double distance;
 void switchOn(int i)
 {
-  for(int i1=0;i1<4;i1++)
+  for(int i1=0;i1<5;i1++)
   {
     if(i1==i)digitalWrite(pins[i1],HIGH);
     else digitalWrite(pins[i1],LOW);
@@ -15,7 +15,7 @@ void switchOn(int i)
 }
 void switchOff()
 {
-  for(int i1=0;i1<4;i1++)
+  for(int i1=0;i1<5;i1++)
   {
     digitalWrite(pins[i1],LOW);
   }
@@ -29,7 +29,7 @@ void setup() {
 boolean access=false;
 void loop() {
   digitalWrite(trigpin,LOW);
-  for(int i=0;i<4;i++)
+  for(int i=0;i<5;i++)
   {
     digitalWrite(pins[i],LOW);
   }/*
@@ -55,6 +55,13 @@ void loop() {
   }
   else if(access==false)
   {
-    if(distance<20){pinMode(pins[3],HIGH);delay(1000);pinMode(pins[3],LOW);delay(400);}
+    if(distance<20){
+      pinMode(pins[3],HIGH);
+      delay(400);
+     pinMode(pins[3],LOW);
+      delay(400);
+      
+      }
   }
+  delay(50);
 }
