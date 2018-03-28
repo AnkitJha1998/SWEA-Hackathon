@@ -71,7 +71,7 @@ void loop() {
   //Serial.print(distance);Serial.println(" cm");
   if(access==true)
   {
-      if(distance<22&&distance>13){switchOn(2);}
+      if(distance<20&&distance>13){switchOn(2);}
       else if(distance<=13&&distance>6){switchOn(1);}
       else if(distance<=6){switchOn(0);}
       else switchOff();
@@ -81,7 +81,7 @@ void loop() {
     
     if(distance<20){
       buzzAlarm=true;
-      Serial.print("2;\n");
+      //Serial.print("2;\n");
       digitalWrite(pins[3],HIGH);digitalWrite(pins[4],HIGH);
       delay(400);
       digitalWrite(pins[3],LOW);digitalWrite(pins[4],LOW);
